@@ -15,3 +15,21 @@ data.forEach((dataRow) => {
       }
     );
   });
+
+  // Adding a user click function
+  function handleClick() {
+    let date = d3.select("#datetime").property("value");
+    let filteredData = tableData;
+
+  // adding an if statement to check for a date filter
+  if (date) {
+    filteredData = filteredData.filter(row => row.datetime === date);
+  };
+
+  // Rebuild the table using filtered data
+  buildTable(filter);
+};
+
+d3.selectAll("#filter-btn").on("click", handleClick);
+
+buildTable(tableData);
