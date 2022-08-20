@@ -24,9 +24,7 @@ function buildTable(data) {
 };
 
 // 1. Create a variable to keep track of all the filters as an object.
-var filters = {
-
-};
+var filters = {};
 
 
 // 3. Use this function to update the filters. 
@@ -45,16 +43,18 @@ function updateFilters() {
     // to the filters list. Otherwise, clear that filter from the filters object.
     if (inputValue) {
       filters[inputID] = inputValue;
-    } else {filters = {};};
+    } else {
+      delete filters[inputID];
+    }
  
   
     // 6. Call function to apply all filters and rebuild the table
-    filterTable(filters);
+    filterTable();
   
   };
   
   // 7. Use this function to filter the table when data is entered.
-  function filterTable(obj) {
+  function filterTable() {
   
     // 8. Set the filtered data to the tableData.
     let filteredData = tableData;
